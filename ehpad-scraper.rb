@@ -12,12 +12,9 @@ def download_all_pages(index_file)
   end
 end
 
-# download_all_pages 'data/maison-retraite-ehpad.index'
+download_all_pages 'data/maison-retraite-ehpad.index'
 fields = PageParser.fields
 puts fields.values.join("\t")
 Dir.glob('data/*.html').each do |f|
   puts PageParser.parse(f).to_csv(fields.keys)
 end
-
-# ap PageParser.parse('data/ehpad-pr-joseph-de-leobardy-limoges.html').info
-# ap PageParser.parse('data/usld-rene-fortin-bohars.html').info
